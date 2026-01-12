@@ -11,7 +11,6 @@ export const parseCSV = (csvData: string): ImportResult => {
   const validBooks: Omit<Book, "id">[] = [];
   const errors: { row: number; error: string }[] = [];
 
-  // Skip header
   for (let i = 1; i < lines.length; i++) {
     const row = lines[i].split(",");
 

@@ -2,7 +2,6 @@
 import { Router } from "express";
 import * as controller from "../controllers/book.controller";
 import { bulkImportBooks } from "../controllers/book.controller";
-import { importBooks } from "../controllers/book.import.controller";
 import { upload } from "../middlewares/upload.middleware";
 
 const router = Router();

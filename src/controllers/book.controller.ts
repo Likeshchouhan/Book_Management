@@ -2,13 +2,11 @@ import { Request, Response } from "express";
 import * as bookService from "../services/book.service";
 import fs from "fs";
 
-// GET /books
 export const getBooks = (req: Request, res: Response) => {
   const books = bookService.getAllBooks();
   res.status(200).json(books);
 };
 
-// GET /books/:id
 export const getBookById = (req: Request, res: Response) => {
   const id = req.params.id as string;
 
@@ -20,13 +18,12 @@ export const getBookById = (req: Request, res: Response) => {
   res.status(200).json(book);
 };
 
-// POST /books
 export const createBook = (req: Request, res: Response) => {
   const book = bookService.createBook(req.body);
   res.status(201).json(book);
 };
 
-// PUT /books/:id
+
 export const updateBook = (req: Request, res: Response) => {
   const id = req.params.id as string;
 
@@ -38,7 +35,7 @@ export const updateBook = (req: Request, res: Response) => {
   res.status(200).json(updatedBook);
 };
 
-// DELETE /books/:id
+
 export const deleteBook = (req: Request, res: Response) => {
   const id = req.params.id as string;
 
@@ -71,7 +68,6 @@ export const bulkImportBooks = async (req: Request, res: Response) => {
     const data: any = {};
     headers.forEach((h, idx) => (data[h] = row[idx]));
 
-    // 🔍 Manual Validation
     const rowErrors: string[] = [];
 
     if (!data.title) rowErrors.push("Title is missing");
@@ -95,7 +91,6 @@ export const bulkImportBooks = async (req: Request, res: Response) => {
     successCount++;
   }
 
-  // delete uploaded file
   fs.unlinkSync(req.file.path);
 
   return res.json({
