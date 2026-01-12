@@ -7,7 +7,7 @@ npm run dev
 ### Endpoints
 GET /books  
 GET /books/:id
-POST /books  
+POST /books/create  
 PUT /books/:id  
 DELETE /books/:id  
 POST /books/import
